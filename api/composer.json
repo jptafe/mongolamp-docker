@@ -1,0 +1,6 @@
+{
+    "name": "jp/oo",
+    "require": {
+        "symfony/http-foundation": "^5.1"
+    }
+}

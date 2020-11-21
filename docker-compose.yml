@@ -1,0 +1,39 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+  api:
+    build: api
+    container_name: "api"
+    restart: always
+    volumes:
+      - ./api:/var/www/html:z
+    ports:
+      - 8081:80  
+  frontend:
+    image: httpd:2.4
+    container_name: "frontend"
+    restart: always
+    volumes:
+      - ./frontend:/usr/local/apache2/htdocs:z
+    ports:
+      - 8080:80
+  persistence:
+    image: mongo:4
+    container_name: "persistence"
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+  persistence-admin:
+    image: mongo-express
+    container_name: "persistence-admin"
+    restart: always
+    ports:
+      - 8082:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_SERVER: persistence
