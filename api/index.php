@@ -12,6 +12,10 @@
      ***********************************************************************/
     require_once __DIR__ . '/vendor/autoload.php';
 
+    /* FIX CORS PROBLEM 
+     ***********************************************************************/
+
+
     /* Declare request, response and session  
      ***********************************************************************/
     use Symfony\Component\HttpFoundation\Request;

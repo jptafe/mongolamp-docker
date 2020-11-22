@@ -10,4 +10,4 @@ RUN set -eux; \
     && docker-php-ext-enable mongodb
 
 EXPOSE 80
-CMD ["apache2-foreground"]
+ENTRYPOINT ["apache2-foreground"]
